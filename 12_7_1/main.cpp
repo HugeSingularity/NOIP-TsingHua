@@ -6,12 +6,12 @@ int find(int l, int r, int x)
 {
     while (l < r)
     {
-        int mid = (l + r + 1) / 2;
+        int mid = (l + r) / 2;
         if (a[mid] < x)
-            l = mid;
+            l = mid + 1;
         else
         {
-            r = mid - 1;
+            r = mid;
         }
     }
     return l;
@@ -27,7 +27,7 @@ int main()
     {
         int x;
         scanf("%d", &x);
-        if (x <= a[0])
+        if (x >= a[n - 1])
         {
             printf("%d\n", -1);
             continue;
