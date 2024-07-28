@@ -1,27 +1,42 @@
 ﻿#include <cstdio>
 
-int N;
-double D1, C, D2, P;
+int n;
+double d1, c, d2, d[8], p[8];
 
 int main()
 {
-    scanf("%u%u%u%u%d", &D1, &C, &D2, &P, &N);
-    double distance[N], price[N];
-    scanf("%u%u", distance, price);
-    int min = 0;
-    for (int i = 1; i < N; i++)
+    scanf("%lf%lf%lf%lf%d", &d1, &c, &d2, p, &n);
+    for (int i = 1; i <= n; i++)
     {
-        int tmp;
-        scanf("%u%u", &tmp, price + i);
-        tmp -= distance[i - 1];
-        distance[i] = tmp;
-        if (distance[i] > C * D2)
+        scanf("%lf%lf", d + i, p + i);
+    }
+    d[n + 1] = d1;
+    double ans = 0, can = 0;
+    for (int i = 0; i <= n; i++)
+    {
+        if (c * d2 < d[i + 1] - d[i])
         {
             printf("No Solution");
             return 0;
         }
-        if (price[i] < price[min]) min = i;
+        for (int j = i + 1; j <= n + 1; j++)
+        {
+            if (c * d2 < d[j] - d[i])
+            {
+                ans += (c - can) * p[i];
+                can = c - (d[j - 1] - d[i]) / d2;
+                i = j - 2;
+                break;
+            }
+            if (p[j] < p[i])
+            {
+                ans += ((d[j] - d[i]) / d2 - can) * p[i];
+                can = 0;
+                i = j - 1;
+                break;
+            }
+        }
     }
-
+    printf("%.2f", ans);
     return 0;
 }
