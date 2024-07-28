@@ -35,9 +35,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{55e7ee31-6bca-42a0-a635-43d2caced1df}</ProjectGuid>
+    <ProjectGuid>{11430336-e2f1-4b9c-b474-cfb03abece2f}</ProjectGuid>
     <Keyword>Linux</Keyword>
-    <RootNamespace>_12_7_1</RootNamespace>
+    <RootNamespace>_11_4_2</RootNamespace>
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <ApplicationType>Linux</ApplicationType>
     <ApplicationTypeRevision>1.0</ApplicationTypeRevision>

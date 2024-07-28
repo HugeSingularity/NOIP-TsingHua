@@ -10,10 +10,10 @@ struct student
     {
         if (a.all > b.all) return 1;
         if (a.all == b.all && a.Chinese > b.Chinese) return 1;
-        if (a.all = b.all && a.Chinese == b.Chinese && a.number < b.number) return 1;
+        if (a.all == b.all && a.Chinese == b.Chinese && a.number < b.number) return 1;
         return 0;
     }
-} a[400];
+} a[1000];
 
 int main()
 {

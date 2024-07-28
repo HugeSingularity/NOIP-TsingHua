@@ -7,11 +7,11 @@ int find(int l, int r, int x)
     while (l < r)
     {
         int mid = (l + r) / 2;
-        if (a[mid] < x)
-            l = mid + 1;
+        if (a[mid] > x)
+            r = mid;
         else
         {
-            r = mid;
+            l = mid + 1;
         }
     }
     return l;
@@ -23,16 +23,21 @@ int main()
     scanf("%d%d", &n, &m);
     for (int i = 0; i < n; i++)
         scanf("%d", a + i);
+    int ans[m];
     for (int i = 0; i < m; i++)
     {
         int x;
         scanf("%d", &x);
         if (x >= a[n - 1])
         {
-            printf("%d\n", -1);
+            ans[i] = -1;
             continue;
         }
-        printf("%d\n", find(0, n, x));
+        ans[i] = find(0, n, x);
+    }
+    for (int i = 0; i < m; i++)
+    {
+        printf("%d\n", ans[i]);
     }
     return 0;
 }

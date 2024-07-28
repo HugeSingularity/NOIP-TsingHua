@@ -9,6 +9,7 @@ void selectionSort(int a[], int b[], int l, int r)
     {
         if (a[min] > a[i])
             min = i;
+        else if (a[min] == a[i] && b[min] < b[i]) min = i;
     }
     if (min != l)
     {
@@ -30,24 +31,17 @@ int main()
     int cnt = 0;
     while (n--)
     {
-        scanf("%d%d", k + cnt, s + cnt);
-        if (s[cnt] >= m) cnt++;
+        scanf("%d%d", k + cnt++, s + cnt);
     }
+    cnt--;
     selectionSort(s, k, 0, cnt);
-    for (int i = 1; i < cnt; i++)
+    int l = 0;
+    for (int i = 0; i <= cnt; i++)
     {
-        if (s[i - 1] == s[i] && k[i - 1] < k[i])
-        {   
-            int tmpK = k[i];
-            k[i] = k[i - 1];
-            k[i - 1] = tmpK;
-            int tmpS = s[i];
-            s[i] = s[i - 1];
-            s[i - 1] = tmpS;
-        }
+        if (s[i] < s[cnt - m + 1]) l++;
     }
-    printf("%d %d\n", m, cnt + 1);
-    for (int i = cnt; i >= 0; i++)
+    printf("%d %d\n", s[cnt - m + 1], cnt - l + 1);
+    for (int i = cnt; i >= l; i--)
     {
         printf("%d %d\n", k[i], s[i]);
     }

@@ -4,7 +4,7 @@ using namespace std;
 
 int find(int a[], int l, int r, int m)
 {
-    int middle = (r - l) / 2;
+    int middle = (r + l + 1) / 2;
     if (a[middle] < m) find(a, middle + 1, r, m);
     else if (a[middle] > m) find(a, l, middle - 1, m);
     else return middle;
